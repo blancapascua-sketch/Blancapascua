@@ -1,23 +1,249 @@
-<header>
-    <nav>
-        <ul class="nav-links">
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#editoriales">Editoriales</a></li>
-            <li><a href="#perfil">Perfil</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5ed00">
+  
+  <title>Blanca Pascua — Visto de Revista</title>
+  <style>
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --yellow: #f5ed00;
+      --font: "Courier New", Courier, monospace;
+      --header-height: 66px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); }
+    body { margin: 0; color: var(--black); background: var(--white); font-family: var(--font); }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid currentColor; outline-offset: 4px;
+    }
+
+    .site-header {
+      position: fixed; z-index: 20; inset: 0 0 auto; min-height: var(--header-height);
+      display: flex; justify-content: space-between; align-items: center; gap: 20px;
+      padding: 0 4vw; color: var(--black); background: transparent;
+      transition: color .2s ease;
+    }
+    .site-header.on-dark { color: var(--white); }
+    .brand { flex: 0 0 auto; font-size: 12px; font-weight: 700; text-decoration: none; letter-spacing: -.06em; }
+    .site-nav { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: clamp(12px, 2.4vw, 34px); }
+    .site-nav a { font-size: 11px; text-decoration: none; letter-spacing: .03em; }
+    .site-nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+    .home {
+      min-height: 100vh; min-height: 100svh; padding: 118px 7vw 38px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      background: var(--yellow); color: var(--black);
+    }
+    .home { padding: 0; min-height: 0; display: block; }
+    .home-image { display: block; width: 100%; height: auto; }
+    .welcome-languages { margin: 0 0 46px; max-width: 1070px; font-size: clamp(14px, 2.1vw, 24px); line-height: 1.65; font-weight: 700; overflow-wrap: anywhere; }
+    .welcome-title { max-width: 1030px; margin: 0; font-size: clamp(27px, 6.4vw, 86px); line-height: .98; letter-spacing: -.085em; font-weight: 900; text-transform: uppercase; }
+    .home-credit { margin: 62px 0 0; font-size: 10px; letter-spacing: .04em; }
+
+    section:not(.home) { scroll-margin-top: var(--header-height); }
+    .section-inner { width: min(100%, 1500px); margin: 0 auto; padding: 112px 7vw; }
+    .section-label { margin: 0 0 12px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+    .section-heading { margin: 0; font-size: clamp(34px, 7vw, 86px); line-height: .95; letter-spacing: -.08em; text-transform: uppercase; }
+    .section-subtitle { margin: 14px 0 44px; font-size: 12px; letter-spacing: .03em; }
+
+    .upcycling { color: var(--white); background: var(--black); }
+    .upcycling .section-inner { padding-top: 120px; padding-bottom: 120px; }
+    .photo-diptych { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+    .polaroid { margin: 0; padding: 14px 14px 24px; color: var(--black); background: var(--white); }
+    .photo-blank { width: 100%; aspect-ratio: 4 / 5; background: var(--white); }
+    .piece-caption { margin: 14px 0 0; font-size: 10px; }
+    .piece-details { margin: 22px 0 0; font-size: 12px; line-height: 1.65; white-space: pre-line; }
+    .piece-details strong { font-weight: 700; }
+    .piece-rule { display: block; margin: 10px 0 15px; }
+    .concept { max-width: 920px; margin: 68px auto 34px; font-size: clamp(16px, 2vw, 23px); line-height: 1.55; text-align: center; }
+    .button-link, .submit-button {
+      min-height: 48px; display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 22px; border: 1px solid currentColor; border-radius: 0;
+      background: transparent; color: inherit; font-size: 11px; text-decoration: none; letter-spacing: .04em;
+    }
+    .button-link:hover { background: var(--white); color: var(--black); }
+
+    .editorials { color: var(--black); background: var(--white); }
+    .editorials .section-inner { padding-top: 120px; }
+    .project { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(260px, .9fr); gap: clamp(26px, 5vw, 76px); align-items: start; padding: 48px 0; border-top: 1px solid var(--black); }
+    .project + .project { margin-top: 20px; }
+    .project-visual { min-height: 340px; aspect-ratio: 4 / 3; border: 1px solid var(--black); background: var(--white); }
+    .project-copy h3 { margin: 0 0 18px; font-size: clamp(24px, 4vw, 48px); line-height: 1; letter-spacing: -.08em; }
+    .project-copy p { margin: 0; font-size: 13px; line-height: 1.75; }
+    .credits { margin-top: 24px !important; font-size: 10px !important; line-height: 1.8 !important; text-transform: uppercase; }
+
+    .profile, .studio, .contact { background: var(--white); color: var(--black); }
+    .profile .section-inner, .studio .section-inner { display: grid; grid-template-columns: .75fr 1.25fr; gap: 8vw; border-top: 1px solid var(--black); }
+    .body-copy { max-width: 820px; margin: 0; font-size: clamp(15px, 1.7vw, 20px); line-height: 1.8; }
+    .contact .section-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 8vw; border-top: 1px solid var(--black); }
+    .contact-copy { max-width: 600px; margin: 0 0 26px; font-size: 15px; line-height: 1.75; }
+    .email-link { display: inline-block; margin-top: 4px; font-size: 13px; text-underline-offset: 4px; }
+    .contact-form { display: grid; gap: 24px; }
+    .field { display: grid; gap: 8px; }
+    .field label { font-size: 10px; letter-spacing: .05em; text-transform: uppercase; }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 10px 0; border: 0; border-bottom: 1px solid var(--black);
+      border-radius: 0; color: var(--black); background: var(--white); font-size: 14px;
+    }
+    .field textarea { min-height: 105px; resize: vertical; }
+    .submit-button { justify-self: start; border-color: var(--black); background: var(--black); color: var(--white); cursor: pointer; }
+    .submit-button:hover { background: var(--white); color: var(--black); }
+    .site-footer { display: flex; justify-content: space-between; gap: 20px; padding: 26px 7vw; border-top: 1px solid var(--black); font-size: 10px; line-height: 1.6; }
+    .site-footer a { text-decoration: none; }
+
+    @media (max-width: 760px) {
+      :root { --header-height: 82px; }
+      .site-header { align-items: flex-start; flex-direction: column; justify-content: center; gap: 7px; padding: 10px 5vw; }
+      .brand { font-size: 10px; }
+      .site-nav { width: 100%; justify-content: space-between; gap: 8px; }
+      .site-nav a { font-size: clamp(8px, 2.1vw, 11px); }
+      .home { padding: 0; }
+      .welcome-languages { margin-bottom: 34px; font-size: clamp(13px, 4vw, 18px); line-height: 1.65; }
+      .welcome-title { font-size: clamp(30px, 10vw, 60px); }
+      .section-inner { padding: 78px 6vw; }
+      .upcycling .section-inner, .editorials .section-inner { padding-top: 86px; padding-bottom: 86px; }
+      .photo-diptych { gap: 12px; }
+      .polaroid { padding: 8px 8px 16px; }
+      .piece-caption { font-size: 8px; }
+      .piece-details { font-size: 10px; line-height: 1.55; }
+      .concept { margin-top: 48px; text-align: left; }
+      .project { grid-template-columns: 1fr; gap: 24px; padding: 32px 0; }
+      .project-visual { min-height: 0; }
+      .profile .section-inner, .studio .section-inner, .contact .section-inner { grid-template-columns: 1fr; gap: 30px; }
+      .body-copy, .contact-copy { font-size: 14px; }
+      .site-footer { flex-direction: column; gap: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <a class="brand" href="#inicio">BLANCA PASCUA</a>
+    <nav class="site-nav" aria-label="Navegación principal">
+      <a href="#editoriales">EDITORIALES</a>
+      <a href="#blanca-pascua">BLANCA PASCUA</a>
+      <a href="#visto-de-revista">VISTO DE REVISTA</a>
+      <a href="#contacto">CONTACTO</a>
     </nav>
+  </header>
 
-    <img
-        src="portada.png"
-        alt=""
-        class="imagen-portada"
+  <main>
+    <section class="home" id="inicio" data-tone="light">
+      <img class="home-image" src="portada.png" alt="">
+    </section>
 
->
-</header>
-.imagen-portada {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-}
+    <section class="upcycling" id="filosofia" data-tone="dark" aria-labelledby="upcycling-title">
+      <div class="section-inner">
+        <p class="section-label">FILOSOFÍA / UPCYCLING</p>
+        <h2 class="section-heading" id="upcycling-title">PIEZA INTERVENIDA</h2>
+        <div class="photo-diptych" aria-label="Dos imágenes de americanas intervenidas">
+          <figure class="polaroid">
+            <div class="photo-blank" role="img" aria-label="Espacio reservado para la primera americana intervenida"></div>
+            <figcaption class="piece-caption">PIEZA INTERVENIDA / UPCYCLING 01</figcaption>
+            <p class="piece-details"><strong>[PROYECTO]</strong>     Visto de Revista
+<strong>[PRENDA]</strong>       Blazer recuperada
+<strong>[TÉCNICA]</strong>      Acrílico sobre tejido
+<strong>[DETALLES]</strong>     Aplicación de remaches metálicos, parche Misfits original, retales de lúrex.</p>
+          </figure>
+          <figure class="polaroid">
+            <div class="photo-blank" role="img" aria-label="Espacio reservado para la segunda americana intervenida"></div>
+            <figcaption class="piece-caption">PIEZA INTERVENIDA / UPCYCLING 01</figcaption>
+          </figure>
+        </div>
+        <p class="concept">Dar una segunda vida a las prendas no es solo una técnica, es una declaración de intenciones. Visto de Revista transforma el archivo vintage a través del estilismo, la intervención manual y una visión consciente de la moda.</p>
+        <a class="button-link" href="#editoriales">[ EXPLORAR PORTFOLIO ]</a>
+      </div>
+    </section>
+
+    <section class="editorials" id="editoriales" data-tone="light" aria-labelledby="editorials-title">
+      <div class="section-inner">
+        <p class="section-label">CREACIÓN DE LOOKS &amp; DIRECCIÓN VISUAL</p>
+        <h2 class="section-heading" id="editorials-title">EDITORIALES</h2>
+        <p class="section-subtitle">CREACIÓN DE LOOKS &amp; DIRECCIÓN VISUAL</p>
+        <article class="project">
+          <div class="project-visual" role="img" aria-label="Espacio reservado para las imágenes de Rockabilly Way"></div>
+          <div class="project-copy">
+            <h3>ROCKABILLY WAY</h3>
+            <p>Una exploración de la subcultura a través del corte y la actitud. Rockabilly Way reinterpreta los códigos de la rebeldía clásica americana. El cuero, el denim rígido y las siluetas afiladas se descontextualizan para dialogar con el asfalto contemporáneo, demostrando que la nostalgia es, ante todo, una declaración de identidad.</p>
+            <p class="credits">STYLING, DIRECTION, FOTOGRAFÍA &amp; EDICIÓN: Blanca Pascua | MODELO: Anna</p>
+          </div>
+        </article>
+        <article class="project">
+          <div class="project-visual" role="img" aria-label="Espacio reservado para las imágenes de The Sartorialist"></div>
+          <div class="project-copy">
+            <h3>THE SARTORIALIST</h3>
+            <p>El arte del corte, la proporción y el silencio visual. The Sartorialist es un ejercicio de deconstrucción de la sastrería tradicional. A través de una mirada minimalista, las prendas de abrigo y los trajes de sastre se despojan de lo accesorio para centrar la atención en la pureza de la línea, la caída del tejido y la sofisticación del detalle oculto.</p>
+            <p class="credits">STYLING &amp; DIRECTION: Blanca Pascua | FOTOGRAFÍA: [Nombre] | MODELO: [Nombre]</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="profile" id="blanca-pascua" data-tone="light" aria-labelledby="profile-title">
+      <div class="section-inner">
+        <div><p class="section-label">BLANCA PASCUA</p><h2 class="section-heading" id="profile-title">PERFIL</h2></div>
+        <p class="body-copy">Estilista especializada en la creación de looks, construcción de imagen y desarrollo de conceptos visuales. Cuento con experiencia en vestuario, showrooms, retail, visual merchandising y proyectos editoriales, lo que me ha permitido consolidar una sensibilidad estética propia para transformar ideas en imágenes coherentes y con impacto visual.<br><br>Mi identidad se define por un lenguaje visual donde las referencias de los años sesenta conviven con la actitud punk, el minimalismo y el detalle inesperado.</p>
+      </div>
+    </section>
+
+    <section class="studio" id="visto-de-revista" data-tone="light" aria-labelledby="studio-title">
+      <div class="section-inner">
+        <div><p class="section-label">ESTUDIO / PROYECTO PERSONAL</p><h2 class="section-heading" id="studio-title">VISTO DE REVISTA</h2></div>
+        <p class="body-copy">Investigación y estudio de desarrollo de conceptos visuales. El proyecto reúne estilismo, dirección creativa, upcycling, moda vintage, asesoría de imagen, creación de contenidos editoriales, identidad visual, espacios y eventos.<br><br>Cada propuesta se desarrolla desde la idea inicial hasta su materialización, formando el equipo creativo adecuado para cada proyecto. Apuesta por la creatividad, la colaboración, la producción responsable y el valor de lo auténtico. Su objetivo es crear imágenes, prendas y experiencias capaces de contar una historia y ayudar a marcas y personas a encontrar una identidad propia.</p>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto" data-tone="light" aria-labelledby="contact-title">
+      <div class="section-inner">
+        <div>
+          <p class="section-label">CONTACTO &amp; COLLABS</p>
+          <h2 class="section-heading" id="contact-title">HABLEMOS</h2>
+          <p class="contact-copy">Construyamos nuevas realidades visuales. Colaboro con marcas, agencias, productoras y editoriales que buscan transformar una idea en una identidad visual coherente, auténtica y con actitud.<br><br>Iniciemos la conversación a través del formulario o vía email para hablar de estilismo, dirección de arte, consultoría de imagen o proyectos de upcycling.</p>
+          <a class="email-link" href="mailto:hola@blancapascua.com">EMAIL: hola@blancapascua.com</a>
+        </div>
+        <form class="contact-form" id="contact-form">
+          <div class="field"><label for="name">Nombre / Marca</label><input id="name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="project-type">Tipo de proyecto</label><select id="project-type" name="project-type" required><option value="" selected disabled>Selecciona una opción</option><option>Estilismo</option><option>Dirección de arte</option><option>Consultoría de imagen</option><option>Upcycling</option><option>Otro</option></select></div>
+          <div class="field"><label for="message">Mensaje</label><textarea id="message" name="message" required></textarea></div>
+          <button class="submit-button" type="submit">[ ENVIAR PROPUESTA ]</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-tone="light">
+    <a href="mailto:hola@blancapascua.com">EMAIL: hola@blancapascua.com</a>
+    <span>©2026 VISTO DE REVISTA</span>
+  </footer>
+
+  <script>
+    const header = document.getElementById('site-header');
+    const toneSections = document.querySelectorAll('[data-tone]');
+    const toneObserver = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) header.classList.toggle('on-dark', entry.target.dataset.tone === 'dark');
+      }
+    }, { rootMargin: '-15% 0px -75% 0px' });
+    toneSections.forEach((section) => toneObserver.observe(section));
+
+    document.getElementById('contact-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const form = new FormData(event.currentTarget);
+      const subject = encodeURIComponent(`Propuesta: ${form.get('project-type')}`);
+      const body = encodeURIComponent(`Nombre / Marca: ${form.get('name')}\nEmail: ${form.get('email')}\nTipo de proyecto: ${form.get('project-type')}\n\n${form.get('message')}`);
+      window.location.href = `mailto:hola@blancapascua.com?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
