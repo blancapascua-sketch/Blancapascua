@@ -3,162 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blanca Pascua — Official</title>
+    <title>Blanca Pascua — Visto de Revista</title>
     <style>
-        /* CONFIGURACIÓN BASE ESTILO EDITORIAL */
+        :root {
+            --bg-color: #fdfdfd;
+            --text-color: #1a1a1a;
+            --accent-color: #da291c; /* Toque punk/Misfits */
+            --border-color: #e0e0e0;
+            --font-main: 'Courier New', Courier, monospace;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         body {
-            background-color: #ededed; /* Tono gris de fondo neutro editorial */
-            color: #000000;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            min-height: 100vh;
-            overflow: hidden;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            border-bottom: 2px solid var(--text-color);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            font-family: var(--font-main);
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .languages {
+            font-size: 0.8rem;
+            color: #666;
+            word-spacing: 5px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            max-width: 900px;
+            font-weight: 800;
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        h2 {
+            font-family: var(--font-main);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--text-color);
+            padding-bottom: 5px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        /* Grid de Proyectos / Upcycling */
+        .project-block {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            background: #f5f5f5;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        @media (min-width: 768px) {
+            .project-block {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .project-meta {
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .project-meta strong {
+            background-color: var(--text-color);
+            color: white;
+            padding: 2px 6px;
+            font-size: 0.75rem;
+            margin-right: 5px;
+        }
+
+        /* Editoriales */
+        .editorials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .editorials-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .editorial-card {
+            border-left: 3px solid var(--text-color);
+            padding-left: 20px;
+        }
+
+        .editorial-card h3 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .editorial-credits {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #555;
+        }
+
+        /* Perfil y Estudio */
+        .profile-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .profile-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .profile-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Formulario de Contacto */
+        form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 600px;
+        }
+
+        .form-group {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
 
-        /* CONTENEDOR HÉROE PRINCIPAL */
-        .hero-container {
-            position: relative;
-            width: 100%;
-            height: 82vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: auto;
-        }
-
-        /* TEXTO GIGANTE EN MEDIO */
-        .bg-text {
-            font-size: 11.5vw;
-            font-weight: 900;
-            letter-spacing: -4px;
+        label {
+            font-family: var(--font-main);
+            font-size: 0.85rem;
             text-transform: uppercase;
-            text-align: center;
-            line-height: 0.82;
-            z-index: 10;
-            pointer-events: none;
-            width: 100%;
-            padding: 0 20px;
-        }
-
-        .bg-text span {
-            display: block;
-        }
-
-        /* TU FOTOGRAFÍA EN PNG CONFIGURADA A MEDIDA */
-        .silueta-blanca {
-            position: absolute;
-            bottom: -5px; /* Ajuste milimétrico para asentar la figura */
-            left: 50%;
-            transform: translateX(-50%);
-            height: 80vh; /* Proporción ideal según tu encuadre */
-            z-index: 20; /* Se superpone con elegancia sobre el texto */
-            pointer-events: none;
-            object-fit: contain;
-        }
-
-        /* DETALLES SUPERIORES (CABECERA) */
-        header {
-            position: absolute;
-            top: 40px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 60px;
-            z-index: 30;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .header-left {
-            border-left: 2px solid #000000;
-            padding-left: 12px;
+            margin-bottom: 5px;
             font-weight: bold;
         }
 
-        .header-right {
-            font-weight: 500;
+        input, select, textarea {
+            padding: 12px;
+            border: 1px solid var(--text-color);
+            background: transparent;
+            font-family: inherit;
+            font-size: 1rem;
         }
 
-        /* GALERÍA INFERIOR ESTILO CINTA DE CARRETE */
-        .bottom-gallery {
-            background-color: #000000;
-            width: 100%;
-            padding: 25px 60px;
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            z-index: 40;
-            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+        input:focus, select:focus, textarea:focus {
+            outline: 2px solid var(--accent-color);
         }
 
-        .mini-item {
-            width: 75px;
-            height: 95px;
-            background-color: #1a1a1a;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            opacity: 0.6;
-            transition: all 0.3s ease;
-        }
-
-        .mini-item:hover {
-            opacity: 1;
-            transform: scale(1.05);
+        button {
+            background: var(--text-color);
+            color: white;
+            padding: 15px;
+            border: none;
+            font-family: var(--font-main);
+            font-weight: bold;
+            text-transform: uppercase;
             cursor: pointer;
+            transition: background 0.2s;
         }
 
-        /* OPTIMIZACIÓN Y RESPONSIVO PARA PANTALLAS MÓVILES */
-        @media (max-width: 1024px) {
-            .bg-text { font-size: 14vw; letter-spacing: -2px; }
-            .silueta-blanca { height: 70vh; }
+        button:hover {
+            background: var(--accent-color);
         }
 
-        @media (max-width: 768px) {
-            .bg-text { font-size: 15vw; line-height: 0.85; }
-            .silueta-blanca { height: 62vh; }
-            .bottom-gallery { gap: 30px; padding: 20px; }
-            .mini-item { width: 55px; height: 70px; }
-            header { padding: 0 30px; top: 25px; }
+        footer {
+            margin-top: 100px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
         }
     </style>
 </head>
 <body>
 
-    <!-- CABECERA EDITORIAL -->
     <header>
-        <div class="header-left">N° 01 / COLLECTION</div>
-        <div class="header-right">STYLING — CREATIVE DIRECTION</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#editoriales">Editoriales</a></li>
+                <li><a href="#perfil">Perfil</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="languages">
+            BIENVENIDE / BENVINGUDE / BENVIDE / ONGI ETORRI / WELCOME / BIENVENUE / BENVENUTE / WILLKOMMEN / BEM-VINDE / WELKOM
+        </div>
+        <h1>AL PORTFOLIO DE BLANCA PASCUA. INVESTIGACIÓN, DESARROLLO Y CONSTRUCCIÓN DE IMAGEN Y OTROS CONCEPTOS VISUALES.</h1>
     </header>
 
-    <!-- COMPOSICIÓN DEL HÉROE -->
-    <div class="hero-container">
-        
-        <!-- Tu nombre de marca de fondo -->
-        <h1 class="bg-text">
-            <span>BLANCA</span>
-            <span>PASCUA</span>
-        </h1>
+    <main>
+        <!-- SECCIÓN UPCYCLING -->
+        <section id="portfolio">
+            <h2>Filosofía / Upcycling</h2>
+            <div class="project-block">
+                <div>
+                    <!-- Espacio diseñado para colocar la imagen de la prenda -->
+                    <div style="background:#ddd; width:100%; height:350px; display:flex; align-items:center; justify-content:center; font-family:var(--font-main); color:#666;">
+                        [ IMAGEN: PIEZA INTERVENIDA 01 ]
+                    </div>
+                </div>
+                <div>
+                    <div class="project-meta">
+                        <p><strong>[PROYECTO]</strong> Visto de Revista</p>
+                        <p><strong>[PRENDA]</strong> Blazer recuperada</p>
+                        <p><strong>[TÉCNICA]</strong> Acrílico sobre tejido</p>
+                        <p><strong>[DETALLES]</strong> Aplicación de remaches metálicos, parche Misfits original, retales de lúrex.</p>
+                    </div>
+                    <p>Dar una segunda vida a las prendas no es solo una técnica, es una declaración de intenciones. Visto de Revista transforma el archivo vintage a través del estilismo, la intervención manual y una visión consciente de la moda.</p>
+                </div>
+            </div>
+        </section>
 
-        <!-- Tu silueta limpia que acabas de enviar -->
-        <img src="blanca-recortada.png" alt="Blanca Pascua" class="silueta-blanca">
+        <!-- SECCIÓN EDITORIALES -->
+        <section id="editoriales">
+            <h2>Creación de Looks & Dirección Visual</h2>
+            <div class="editorials-grid">
+                <div class="editorial-card">
+                    <h3>Rockabilly Way</h3>
+                    <p>Una exploración de la subcultura a través del corte y la actitud. Rockabilly Way reinterpreta los códigos de la rebeldía clásica americana. El cuero, el denim rígido y las siluetas afiladas se descontextualizan para dialogar con el asfalto contemporáneo, demostrando que la nostalgia es, ante todo, una declaración de identidad.</p>
+                    <div class="editorial-credits">
+                        <strong>Styling, Direction, Fotografía & Edición:</strong> Blanca Pascua | <strong>Modelo:</strong> Anna
+                    </div>
+                </div>
 
-    </div>
+                <div class="editorial-card">
+                    <h3>The Sartorialist</h3>
+                    <p>El arte del corte, la proporción y el silencio visual. The Sartorialist es un ejercicio de deconstrucción de la sastrería tradicional. A través de una mirada minimalista, las prendas de abrigo y los trajes de sastre se despojan de lo accesorio para centrar la atención en la pureza de la línea, la caída del tejido y la sofisticación del detalle oculto.</p>
+                    <div class="editorial-credits">
+                        <strong>Styling & Direction:</strong> Blanca Pascua | <strong>Fotografía:</strong> [Nombre] | <strong>Modelo:</strong> [Nombre]
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- CARRETE DE MINIATURAS INFERIOR -->
-    <div class="bottom-gallery">
-        <div class="mini-item"></div>
-        <div class="mini-item"></div>
-        <div class="mini-item"></div>
-    </div>
-
-</body>
-</html>
+        <!-- SECCIÓN PERFIL -->
+        <section id="perfil">
+            <h2>Perfil & Estudio</h2>
+            <div class="profile-container">
+                <div class="profile-text">
+                    <p>Estilista especializada en la creación de looks, construcción de imagen y desarrollo de conceptos visuales. Cuento con experiencia en vestuario, showrooms, retail, visual merchandising y proyectos editoriales, lo que me ha permitido consolidar una sensibilidad estética propia para transformar ideas en imágenes coherentes y con impacto visual.</p>
