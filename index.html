@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blanca Pascua — Official</title>
+    <style>
+        /* CONFIGURACIÓN BASE ESTILO EDITORIAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ededed; /* Tono gris de fondo neutro editorial */
+            color: #000000;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* CONTENEDOR HÉROE PRINCIPAL */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 82vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        /* TEXTO GIGANTE EN MEDIO */
+        .bg-text {
+            font-size: 11.5vw;
+            font-weight: 900;
+            letter-spacing: -4px;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 0.82;
+            z-index: 10;
+            pointer-events: none;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .bg-text span {
+            display: block;
+        }
+
+        /* TU FOTOGRAFÍA EN PNG CONFIGURADA A MEDIDA */
+        .silueta-blanca {
+            position: absolute;
+            bottom: -5px; /* Ajuste milimétrico para asentar la figura */
+            left: 50%;
+            transform: translateX(-50%);
+            height: 80vh; /* Proporción ideal según tu encuadre */
+            z-index: 20; /* Se superpone con elegancia sobre el texto */
+            pointer-events: none;
+            object-fit: contain;
+        }
+
+        /* DETALLES SUPERIORES (CABECERA) */
+        header {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 60px;
+            z-index: 30;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .header-left {
+            border-left: 2px solid #000000;
+            padding-left: 12px;
+            font-weight: bold;
+        }
+
+        .header-right {
+            font-weight: 500;
+        }
+
+        /* GALERÍA INFERIOR ESTILO CINTA DE CARRETE */
+        .bottom-gallery {
+            background-color: #000000;
+            width: 100%;
+            padding: 25px 60px;
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            z-index: 40;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .mini-item {
+            width: 75px;
+            height: 95px;
+            background-color: #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .mini-item:hover {
+            opacity: 1;
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        /* OPTIMIZACIÓN Y RESPONSIVO PARA PANTALLAS MÓVILES */
+        @media (max-width: 1024px) {
+            .bg-text { font-size: 14vw; letter-spacing: -2px; }
+            .silueta-blanca { height: 70vh; }
+        }
+
+        @media (max-width: 768px) {
+            .bg-text { font-size: 15vw; line-height: 0.85; }
+            .silueta-blanca { height: 62vh; }
+            .bottom-gallery { gap: 30px; padding: 20px; }
+            .mini-item { width: 55px; height: 70px; }
+            header { padding: 0 30px; top: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA EDITORIAL -->
+    <header>
+        <div class="header-left">N° 01 / COLLECTION</div>
+        <div class="header-right">STYLING — CREATIVE DIRECTION</div>
+    </header>
+
+    <!-- COMPOSICIÓN DEL HÉROE -->
+    <div class="hero-container">
+        
+        <!-- Tu nombre de marca de fondo -->
+        <h1 class="bg-text">
+            <span>BLANCA</span>
+            <span>PASCUA</span>
+        </h1>
+
+        <!-- Tu silueta limpia que acabas de enviar -->
+        <img src="blanca-recortada.png" alt="Blanca Pascua" class="silueta-blanca">
+
+    </div>
+
+    <!-- CARRETE DE MINIATURAS INFERIOR -->
+    <div class="bottom-gallery">
+        <div class="mini-item"></div>
+        <div class="mini-item"></div>
+        <div class="mini-item"></div>
+    </div>
+
+</body>
+</html>
