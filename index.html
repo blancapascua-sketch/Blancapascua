@@ -1,20 +1,84 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blanca Pascua</title>
-  <style>
-    * { box-sizing: border-box; }
-    html, body { margin: 0; min-height: 100%; }
-    body { background: #fff; }
-    main { min-height: 100svh; display: flex; align-items: center; justify-content: center; padding: 2vmin; }
-    img { display: block; width: 96vw; height: 96svh; object-fit: contain; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>Blanca Pascua</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:'Courier New',Courier,monospace}
+body{background:#fff}
+.cover{height:100svh;display:grid;place-items:center;padding:clamp(10px,2vw,24px);background:#fff}
+.cover button{display:grid;place-items:center;width:100%;height:100%;border:0;padding:0;background:transparent;cursor:pointer}
+.cover img{display:block;max-width:100%;max-height:calc(100svh - 24px);width:auto;height:auto;object-fit:contain}
+.screen{display:none;position:relative;min-height:100svh;background:#000;color:#fff;overflow:hidden}
+body.entered{background:#000}
+body.entered .cover{display:none}
+body.entered .screen{display:grid;place-items:center}
+.stage{position:absolute;inset:0;display:flex;align-items:center;padding:clamp(20px,7vw,110px);opacity:0;visibility:hidden;transition:opacity 1.6s ease,visibility 1.6s ease;pointer-events:none}
+.stage.visible{opacity:1;visibility:visible}
+.stage.center{justify-content:center;text-align:center}
+.stage.left{justify-content:flex-start;text-align:left}
+.stage.right{justify-content:flex-end;text-align:right}
+.stage span{font-size:clamp(22px,4.7vw,65px);line-height:1.18;font-weight:400;letter-spacing:.015em;overflow-wrap:anywhere}
+.stage.name span{font-size:clamp(36px,7.5vw,105px);font-weight:700;letter-spacing:-.045em}
+.menu{position:relative;display:flex;flex-direction:column;align-items:center;gap:clamp(24px,5vh,54px);width:100%;padding:36px 20px;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity 1.7s ease,transform 1.7s ease,visibility 1.7s ease;pointer-events:none}
+.menu.visible{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+.menu button{font:inherit;font-size:clamp(19px,3.7vw,46px);color:#fff;background:transparent;border:0;padding:8px 10px;text-align:center;cursor:pointer;letter-spacing:.01em}
+.menu button:hover,.menu button:focus-visible{text-decoration:underline;text-underline-offset:9px}
+.panel{display:none;position:absolute;inset:0;background:#000;color:#fff;z-index:3;flex-direction:column;justify-content:center;align-items:center;padding:24px;text-align:center}
+.panel.open{display:flex}
+.panel h1{font-size:clamp(25px,5vw,64px);font-weight:400;line-height:1.25}
+.back{position:absolute;left:clamp(20px,5vw,75px);top:clamp(24px,5vw,65px);border:0;background:none;color:#fff;font:inherit;font-size:15px;cursor:pointer}
+button:focus-visible{outline:2px solid currentColor;outline-offset:6px}
+@media(prefers-reduced-motion:reduce){.stage,.menu{transition:none}}
+</style>
 </head>
 <body>
-  <main>
-    <img src="portada.png" alt="Portada de Blanca Pascua">
-  </main>
+<main>
+<section class="cover" aria-label="Portada"><button id="enter" aria-label="Entrar al portfolio"><img src="portada.png" alt="Portada de Blanca Pascua"></button></section>
+<section class="screen" id="screen" aria-label="Presentación">
+  <div class="stage center name" id="stage-name"><span>BLANCA PASCUA</span></div>
+  <div class="stage left" id="stage-styling"><span>ESTILISMO</span></div>
+  <div class="stage center" id="stage-creative"><span>DIRECCIÓN CREATIVA</span></div>
+  <div class="stage right" id="stage-identity"><span>IDENTIDAD VISUAL</span></div>
+  <nav class="menu" id="menu" aria-label="Secciones del portfolio">
+    <button type="button" data-panel="sobre-mi">SOBRE MÍ</button>
+    <button type="button" data-panel="visto-de-revista">VISTO DE REVISTA</button>
+    <button type="button" data-panel="proposito-y-valores">PROPÓSITO Y VALORES</button>
+  </nav>
+  <section class="panel" id="sobre-mi" aria-label="Sobre mí"><button class="back" type="button">← VOLVER</button><h1>SOBRE MÍ</h1></section>
+  <section class="panel" id="visto-de-revista" aria-label="Visto de Revista"><button class="back" type="button">← VOLVER</button><h1>VISTO DE REVISTA</h1></section>
+  <section class="panel" id="proposito-y-valores" aria-label="Propósito y valores"><button class="back" type="button">← VOLVER</button><h1>PROPÓSITO Y VALORES</h1></section>
+</section>
+</main>
+<script>
+const stages=['stage-name','stage-styling','stage-creative','stage-identity'].map(id=>document.getElementById(id));
+const menu=document.getElementById('menu');
+let started=false;
+const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+document.getElementById('enter').addEventListener('click',async()=>{
+ if(started)return;started=true;
+ document.body.classList.add('entered');
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(!reduced){
+   await sleep(450);
+   for(const stage of stages){
+     stage.classList.add('visible');
+     await sleep(2600);
+     stage.classList.remove('visible');
+     await sleep(1550);
+   }
+ }
+ menu.classList.add('visible');
+});
+menu.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{
+ document.getElementById(button.dataset.panel).classList.add('open');
+}));
+document.querySelectorAll('.back').forEach(button=>button.addEventListener('click',()=>{
+ button.closest('.panel').classList.remove('open');
+}));
+</script>
 </body>
 </html>
