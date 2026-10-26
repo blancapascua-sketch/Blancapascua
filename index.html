@@ -3,56 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#ffffff">
-<title>Blanca Pascua — Portfolio</title>
+<meta name="theme-color" content="#080808">
+<title>Blanca Pascua — Estilismo y dirección creativa</title>
 <style>
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%;}
-body{background:#fff;font-family:Georgia,'Times New Roman',serif}
-button{font:inherit}
-#cover{width:100%;min-height:100svh;border:0;background:#fff;display:grid;place-items:center;padding:2vmin;cursor:pointer}
-#cover img{width:96vw;height:96svh;object-fit:contain;display:block}
-#cover:focus-visible,.menu a:focus-visible{outline:3px solid #a99c85;outline-offset:5px}
-#cinema{display:none;position:fixed;inset:0;background:#050505;align-items:center;justify-content:center;padding:0;overflow:hidden}
-body.playing #cover{display:none}
-body.playing #cinema{display:flex}
-.frame{position:relative;width:min(100vw,calc(100svh * 1536 / 953));aspect-ratio:1536/953;background:#070707 url('marco_original.png') center/100% 100% no-repeat;overflow:hidden}
-#cardtitle{position:absolute;inset:37% 14% 40%;display:flex;align-items:center;justify-content:center;text-align:center;color:#e9e1d3;font-family:'Times New Roman',Georgia,serif;font-weight:400;font-size:clamp(16px,5.6vw,88px);line-height:1.03;letter-spacing:.015em;text-transform:uppercase;white-space:nowrap;opacity:0;transition:opacity .26s ease-in-out;text-shadow:0 0 1px #d9cfbc}
-#cardtitle.visible{opacity:1}
-#cardtitle.small{font-size:clamp(15px,4.6vw,72px)}
-.menu{position:absolute;inset:36% 18% 37%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(9px,2.3vw,30px);opacity:0;visibility:hidden;transition:opacity .55s ease,visibility .55s ease}
-.menu.visible{opacity:1;visibility:visible}
-.menu a{color:#e9e1d3;text-decoration:none;text-align:center;text-transform:uppercase;font-family:'Times New Roman',Georgia,serif;font-size:clamp(15px,2.6vw,38px);letter-spacing:.06em;line-height:1.2}
-.menu a:hover,.menu a:focus-visible{text-decoration:underline;text-underline-offset:7px}
-.panel{display:none;position:fixed;inset:0;background:#f7f5f1;color:#161616;padding:clamp(24px,7vw,100px);overflow:auto;z-index:5}
-.panel.active{display:block}
-.panel h1{font-weight:normal;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(30px,6vw,72px)}
-.panel p{font-size:18px;max-width:55ch;line-height:1.5}
-.back{border:0;background:transparent;text-decoration:underline;cursor:pointer;padding:8px 0;text-transform:uppercase;letter-spacing:.08em}
-@media(max-width:600px){#cardtitle{font-size:clamp(15px,5.6vw,36px)}#cardtitle.small{font-size:clamp(13px,4.7vw,30px)}.menu{gap:12px}.menu a{font-size:clamp(12px,2.9vw,20px)}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#0b0a09;color:#eee8db;font-family:Georgia,'Times New Roman',serif}button,a{font:inherit}
+#intro{position:fixed;inset:0;z-index:10;background:#080808 url('marco-vintage.png') center center/100% 100% no-repeat;overflow:hidden;animation:exitIntro .35s ease 5.5s forwards;}
+#intro:after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.12;background:repeating-linear-gradient(90deg,transparent 0 93px,#fff 94px,transparent 95px 211px);animation:flicker .21s steps(2) infinite}
+.word{position:absolute;top:49.5%;left:50%;transform:translate(-50%,-50%);margin:0;width:75%;text-align:center;color:#eee8db;font-family:'Bodoni MT','Didot','Times New Roman',serif;font-stretch:condensed;font-weight:400;font-size:clamp(27px,6.1vw,105px);letter-spacing:.045em;line-height:1.05;text-transform:uppercase;opacity:0;text-shadow:0 0 1px #f5f0e5;white-space:nowrap}
+.word:nth-child(1){animation:show1 5.5s linear forwards}.word:nth-child(2){animation:show2 5.5s linear forwards}.word:nth-child(3){font-size:clamp(19px,5.2vw,88px);animation:show3 5.5s linear forwards}.word:nth-child(4){font-size:clamp(20px,5vw,85px);animation:show4 5.5s linear forwards}
+@keyframes show1{0%,1%{opacity:0}3%,19%{opacity:1}22%,100%{opacity:0}}@keyframes show2{0%,25%{opacity:0}28%,44%{opacity:1}47%,100%{opacity:0}}@keyframes show3{0%,50%{opacity:0}53%,69%{opacity:1}72%,100%{opacity:0}}@keyframes show4{0%,75%{opacity:0}78%,94%{opacity:1}97%,100%{opacity:0}}@keyframes exitIntro{to{opacity:0;visibility:hidden;pointer-events:none}}@keyframes flicker{0%{opacity:.08}50%{opacity:.15}100%{opacity:.06}}
+#site{min-height:100svh;background:#080808 url('marco-vintage.png') center center/100% 100% no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:17vh 12vw;gap:clamp(24px,6vh,70px)}
+.site-name{font-weight:400;font-size:clamp(28px,6vw,88px);letter-spacing:.055em;margin:0;text-transform:uppercase;white-space:nowrap}.nav{display:flex;justify-content:center;gap:clamp(15px,3vw,55px);flex-wrap:wrap;max-width:750px}.nav a{color:#eee8db;text-decoration:none;font-size:clamp(10px,1.35vw,16px);letter-spacing:.13em;text-transform:uppercase;border-bottom:1px solid transparent;padding-bottom:6px}.nav a:hover,.nav a:focus-visible{border-color:currentColor}
+section{min-height:55vh;background:#f0ede7;color:#171512;padding:90px max(8vw,25px);border-bottom:1px solid #bdb6a9}section:nth-of-type(even){background:#e6e1d8}section h2{font-size:clamp(28px,5vw,70px);font-weight:400;letter-spacing:.04em;margin:0;text-transform:uppercase}footer{padding:30px;text-align:center;font-size:12px;letter-spacing:.14em}
+@media(max-width:650px){#intro,#site{background-size:100% 100%}.word{width:82%;font-size:clamp(23px,6.1vw,42px)}.word:nth-child(3),.word:nth-child(4){font-size:clamp(18px,4.9vw,34px)}#site{padding:15vh 10vw}.site-name{font-size:clamp(24px,6vw,42px)}.nav{flex-direction:column;gap:22px}}
+@media(prefers-reduced-motion:reduce){#intro{animation:none;display:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<button id="cover" aria-label="Entrar al portfolio de Blanca Pascua"><img src="portada.png" alt="Portada de Blanca Pascua"></button>
-<main id="cinema" aria-label="Presentación de Blanca Pascua"><div class="frame"><div id="cardtitle" aria-live="polite"></div><nav class="menu" id="menu" aria-label="Secciones del portfolio"><a href="#sobre-mi">Sobre mí</a><a href="#visto-de-revista">Visto de Revista</a><a href="#proposito-y-valores">Propósito y valores</a></nav></div></main>
-<section class="panel" id="sobre-mi"><button class="back" type="button">← Volver al menú</button><h1>Sobre mí</h1><p>Próximamente.</p></section>
-<section class="panel" id="visto-de-revista"><button class="back" type="button">← Volver al menú</button><h1>Visto de Revista</h1><p>Próximamente.</p></section>
-<section class="panel" id="proposito-y-valores"><button class="back" type="button">← Volver al menú</button><h1>Propósito y valores</h1><p>Próximamente.</p></section>
-<script>
-(()=>{
- const cover=document.getElementById('cover'),title=document.getElementById('cardtitle'),menu=document.getElementById('menu');
- const names=['BLANCA PASCUA','ESTILISMO','DIRECCIÓN CREATIVA','IDENTIDAD VISUAL'];
- let timers=[]; const schedule=(fn,ms)=>timers.push(setTimeout(fn,ms));
- function start(){timers.forEach(clearTimeout);timers=[];document.body.classList.add('playing');menu.classList.remove('visible');title.classList.remove('visible');
- names.forEach((name,i)=>{const at=i*1250;
- schedule(()=>{title.textContent=name;title.classList.toggle('small',i>0);title.classList.add('visible')},at+80);
- schedule(()=>title.classList.remove('visible'),at+990);
- });
- schedule(()=>{title.classList.remove('visible');menu.classList.add('visible')},5500);
- }
- cover.addEventListener('click',start);
- function showPanel(){const id=decodeURIComponent(location.hash.slice(1));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===id));}
- window.addEventListener('hashchange',showPanel);document.querySelectorAll('.back').forEach(b=>b.addEventListener('click',()=>{location.hash='';document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'))}));showPanel();
-})();
-</script>
-</body></html>
+<div id="intro" aria-label="Presentación cinematográfica de Blanca Pascua"><div class="word">BLANCA PASCUA</div><div class="word">ESTILISMO</div><div class="word">DIRECCIÓN CREATIVA</div><div class="word">IDENTIDAD VISUAL</div></div>
+<main>
+<header id="site"><h1 class="site-name">BLANCA PASCUA</h1><nav class="nav" aria-label="Menú principal"><a href="#sobre-mi">Sobre mí</a><a href="#visto-de-revista">Visto de Revista</a><a href="#proposito-y-valores">Propósito y valores</a></nav></header>
+<section id="sobre-mi"><h2>Sobre mí</h2></section>
+<section id="visto-de-revista"><h2>Visto de Revista</h2></section>
+<section id="proposito-y-valores"><h2>Propósito y valores</h2></section>
+</main><footer>© BLANCA PASCUA</footer>
+</body>
+</html>
