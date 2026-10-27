@@ -54,6 +54,16 @@ body.abierto #secciones{display:block}
 #panel-foto .retrato{height:100%;width:100%;background-image:url('sobre-mi.png');background-size:auto 120%;background-position:90% 45%;background-repeat:no-repeat}
 #panel-foto .cerrar-panel{position:absolute;right:15px;top:15px}
 @media(max-width:600px){#menu nav{flex-direction:column;gap:16px}#menu{gap:40px}.palabra.larga{font-size:clamp(22px,5.8vw,38px)}#secciones section{padding:75px 12px 35px}}
+
+#proposito-y-valores{background:#faf9f6;color:#171717}
+.manifiesto{max-width:790px;margin:auto}
+.manifiesto h2{text-align:center;letter-spacing:.06em;margin:0 0 60px}
+.manifiesto .apertura{font-family:"Courier New",monospace;font-size:clamp(17px,2.3vw,23px);line-height:1.65;margin-bottom:48px}
+.manifiesto .declaracion{font-family:"Courier New",monospace;font-size:clamp(14px,1.7vw,18px);line-height:1.8;margin-bottom:65px}
+.manifiesto p{margin:0 0 1.5em}
+.manifiesto figure{margin:0 auto;width:min(100%,560px)}
+.manifiesto figure img{width:100%;height:auto;display:block}
+.manifiesto figcaption{text-align:center;font:11px "Courier New",monospace;letter-spacing:.08em;margin-top:15px}
 </style>
 </head>
 <body>
@@ -80,7 +90,12 @@ body.abierto #secciones{display:block}
 </div><div id="panel-foto" class="panel"><button class="cerrar-panel" type="button">CERRAR ×</button><div class="retrato" role="img" aria-label="Fotografía original ampliada de Blanca Pascua"></div></div>
 </div><p class="ayuda">PULSA EL TEXTO O LA FOTOGRAFÍA PARA AMPLIAR</p></section>
 <section id="visto-de-revista"><h2>VISTO DE REVISTA</h2></section>
-<section id="proposito-y-valores"><h2>PROPÓSITO Y VALORES</h2></section>
+<section id="proposito-y-valores"><div class="manifiesto">
+<h2>PROPÓSITO Y VALORES</h2>
+<div class="apertura"><p>A veces, lo que falta no es otra idea, sino saber ver lo que ya tenemos delante.</p><p>Mi trabajo empieza ahí: analizar una identidad, reconocer su potencial y construir una imagen con criterio propio. A través del estilismo, la fotografía y la creación visual, doy forma a las ideas y busco los medios para llevarlas a cabo.</p></div>
+<div class="declaracion"><p>Entiendo la moda como un lenguaje de expresión e identidad, donde los materiales, las formas, el color y las referencias culturales permiten construir nuevas narrativas.</p><p>Defiendo una manera de crear basada en la autenticidad, la experimentación y el aprovechamiento de los recursos existentes. Reinterpretar, transformar y dar una segunda vida a las prendas forma parte de mi manera de entender el proceso creativo.</p><p>Creo en el valor de lo hecho con intención, en la libertad de expresión y en una moda más consciente, donde la creatividad no dependa necesariamente de producir algo nuevo.</p></div>
+<figure><img src="reduce-reuse-recycle.png" alt="Reduce Reuse Recycle Rewear Repeat, Visto de Revista" loading="lazy"><figcaption>REDUCE · REUSE · RECYCLE · REWEAR · REPEAT</figcaption></figure>
+</div></section>
 </main>
 <script>
 const portada=document.getElementById('portada');
