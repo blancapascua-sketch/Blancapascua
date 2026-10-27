@@ -54,16 +54,24 @@ body.abierto #secciones{display:block}
 #panel-foto .retrato{height:100%;width:100%;background-image:url('sobre-mi.png');background-size:auto 120%;background-position:90% 45%;background-repeat:no-repeat}
 #panel-foto .cerrar-panel{position:absolute;right:15px;top:15px}
 @media(max-width:600px){#menu nav{flex-direction:column;gap:16px}#menu{gap:40px}.palabra.larga{font-size:clamp(22px,5.8vw,38px)}#secciones section{padding:75px 12px 35px}}
-
-#proposito-y-valores{background:#faf9f6;color:#171717}
-.manifiesto{max-width:790px;margin:auto}
-.manifiesto h2{text-align:center;letter-spacing:.06em;margin:0 0 60px}
-.manifiesto .apertura{font-family:"Courier New",monospace;font-size:clamp(17px,2.3vw,23px);line-height:1.65;margin-bottom:48px}
-.manifiesto .declaracion{font-family:"Courier New",monospace;font-size:clamp(14px,1.7vw,18px);line-height:1.8;margin-bottom:65px}
+/* PROPÓSITO Y VALORES: MÁRGENES Y TAMAÑO UNIFORME */
+#proposito-y-valores{background:#faf9f6;color:#171717;padding:clamp(65px,9vw,110px) clamp(25px,7vw,90px) 75px!important}
+.manifiesto{width:100%;max-width:760px;margin:0 auto}
+.manifiesto h2{text-align:center;letter-spacing:.04em;margin:0 0 42px;font-size:clamp(27px,5vw,45px)!important}
+.manifiesto .apertura,.manifiesto .declaracion{font-family:"Courier New",monospace;font-size:16px;line-height:1.85;letter-spacing:0;font-weight:400;max-width:66ch;margin:0 auto 30px;overflow-wrap:break-word;text-align:left}
 .manifiesto p{margin:0 0 1.5em}
+.manifiesto .texto-pulsable{cursor:zoom-in}
+.manifiesto .texto-pulsable:focus-visible{outline:2px solid #171717;outline-offset:5px}
+.manifiesto .ayuda-proposito{text-align:center;font:11px "Courier New",monospace;letter-spacing:.08em;margin:0 0 32px}
 .manifiesto figure{margin:0 auto;width:min(100%,560px)}
-.manifiesto figure img{width:100%;height:auto;display:block}
+.manifiesto figure img{width:100%;height:auto;display:block;object-fit:contain}
 .manifiesto figcaption{text-align:center;font:11px "Courier New",monospace;letter-spacing:.08em;margin-top:15px}
+#lectura-proposito{display:none;position:fixed;inset:0;z-index:1000;background:#faf9f6;color:#171717;overflow-y:auto;padding:85px clamp(25px,7vw,90px) 60px}
+#lectura-proposito.abierto{display:block}
+#lectura-proposito .contenido{max-width:720px;margin:auto;font:400 clamp(21px,3vw,27px)/1.8 "Courier New",monospace}
+#lectura-proposito .contenido p{margin:0 0 1.5em}
+#cerrar-lectura{position:fixed;top:18px;right:18px;background:#171717;color:white;border:0;padding:12px 18px;cursor:pointer;font:13px "Courier New",monospace}
+@media(max-width:600px){#proposito-y-valores{padding:60px 25px 60px!important}.manifiesto h2{margin-bottom:32px}.manifiesto .apertura,.manifiesto .declaracion{font-size:16px;line-height:1.8}}
 </style>
 </head>
 <body>
@@ -92,11 +100,13 @@ body.abierto #secciones{display:block}
 <section id="visto-de-revista"><h2>VISTO DE REVISTA</h2></section>
 <section id="proposito-y-valores"><div class="manifiesto">
 <h2>PROPÓSITO Y VALORES</h2>
-<div class="apertura"><p>A veces, lo que falta no es otra idea, sino saber ver lo que ya tenemos delante.</p><p>Mi trabajo empieza ahí: analizar una identidad, reconocer su potencial y construir una imagen con criterio propio. A través del estilismo, la fotografía y la creación visual, doy forma a las ideas y busco los medios para llevarlas a cabo.</p></div>
-<div class="declaracion"><p>Entiendo la moda como un lenguaje de expresión e identidad, donde los materiales, las formas, el color y las referencias culturales permiten construir nuevas narrativas.</p><p>Defiendo una manera de crear basada en la autenticidad, la experimentación y el aprovechamiento de los recursos existentes. Reinterpretar, transformar y dar una segunda vida a las prendas forma parte de mi manera de entender el proceso creativo.</p><p>Creo en el valor de lo hecho con intención, en la libertad de expresión y en una moda más consciente, donde la creatividad no dependa necesariamente de producir algo nuevo.</p></div>
-<figure><img src="reduce-reuse-recycle.png" alt="Reduce Reuse Recycle Rewear Repeat, Visto de Revista" loading="lazy"><figcaption>REDUCE · REUSE · RECYCLE · REWEAR · REPEAT</figcaption></figure>
+<div class="apertura texto-pulsable" role="button" tabindex="0" aria-label="Ampliar texto de Propósito y valores"><p>A veces, lo que falta no es otra idea, sino saber ver lo que ya tenemos delante.</p><p>Mi trabajo empieza ahí: analizar una identidad, reconocer su potencial y construir una imagen con criterio propio. A través del estilismo, la fotografía y la creación visual, doy forma a las ideas y busco los medios para llevarlas a cabo.</p></div>
+<div class="declaracion texto-pulsable" role="button" tabindex="0" aria-label="Ampliar texto de Propósito y valores"><p>Entiendo la moda como un lenguaje de expresión e identidad, donde los materiales, las formas, el color y las referencias culturales permiten construir nuevas narrativas.</p><p>Defiendo una manera de crear basada en la autenticidad, la experimentación y el aprovechamiento de los recursos existentes. Reinterpretar, transformar y dar una segunda vida a las prendas forma parte de mi manera de entender el proceso creativo.</p><p>Creo en el valor de lo hecho con intención, en la libertad de expresión y en una moda más consciente, donde la creatividad no dependa necesariamente de producir algo nuevo.</p></div>
+<p class="ayuda-proposito">PULSA EL TEXTO PARA AMPLIAR</p>
+<figure><img src="Visto_de_Revista_Reduce_Reuse_Recycle_original.png" alt="Reduce Reuse Recycle Rewear Repeat, Visto de Revista" loading="lazy"><figcaption>REDUCE · REUSE · RECYCLE · REWEAR · REPEAT</figcaption></figure>
 </div></section>
 </main>
+<div id="lectura-proposito" role="dialog" aria-modal="true" aria-label="Propósito y valores ampliado"><button id="cerrar-lectura" type="button">CERRAR ×</button><div class="contenido"></div></div>
 <script>
 const portada=document.getElementById('portada');
 portada.addEventListener('click',()=>document.body.classList.add('iniciado'));
@@ -107,6 +117,13 @@ document.getElementById('expandir-texto').addEventListener('click',()=>editorial
 document.getElementById('expandir-foto').addEventListener('click',()=>editorial.classList.add('foto-abierta'));
 editorial.querySelectorAll('.cerrar-panel').forEach(b=>b.addEventListener('click',()=>editorial.classList.remove('texto-abierto','foto-abierta')));
 document.addEventListener('keydown',e=>{if(e.key==='Escape')editorial.classList.remove('texto-abierto','foto-abierta')});
+const lectura=document.getElementById('lectura-proposito');
+lectura.querySelector('.contenido').innerHTML=document.querySelector('.manifiesto .apertura').innerHTML+document.querySelector('.manifiesto .declaracion').innerHTML;
+const abrirLectura=()=>{lectura.classList.add('abierto');lectura.scrollTop=0;document.getElementById('cerrar-lectura').focus()};
+const cerrarLectura=()=>lectura.classList.remove('abierto');
+document.querySelectorAll('.manifiesto .texto-pulsable').forEach(el=>{el.addEventListener('click',abrirLectura);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();abrirLectura()}})});
+document.getElementById('cerrar-lectura').addEventListener('click',cerrarLectura);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')cerrarLectura()});
 </script>
 </body>
 </html>
