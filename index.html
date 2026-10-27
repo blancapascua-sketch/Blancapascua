@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -8,9 +9,11 @@
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;background:#fff}
 body{font-family:Georgia,"Times New Roman",serif}
-button{font:inherit}
-#portada{display:grid;place-items:center;width:100%;min-height:100svh;background:white;border:0;padding:2vmin;cursor:pointer}
+button{font:inherit;cursor:pointer}
+
+#portada{display:grid;place-items:center;width:100%;min-height:100svh;background:white;border:0;padding:2vmin}
 #portada img{display:block;width:96vw;height:96svh;object-fit:contain}
+
 #cine{display:none;position:fixed;inset:0;background:#080808;color:#f2eee4;align-items:center;justify-content:center;overflow:hidden}
 body.iniciado #portada{display:none}
 body.iniciado #cine{display:flex}
@@ -23,18 +26,21 @@ body.iniciado .palabra:nth-child(2){animation-delay:1.5s}
 body.iniciado .palabra:nth-child(3){animation-delay:3s}
 body.iniciado .palabra:nth-child(4){animation-delay:4.5s}
 @keyframes titulo{0%{opacity:0}16%{opacity:1}72%{opacity:1}100%{opacity:0}}
+
 #menu{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(35px,7vh,90px);padding:12vh 8vw;opacity:0;visibility:hidden}
 body.iniciado #menu{animation:mostrarMenu .45s ease 6s forwards}
 @keyframes mostrarMenu{to{opacity:1;visibility:visible}}
 #menu nav{display:flex;align-items:center;justify-content:center;gap:clamp(20px,4vw,60px);flex-wrap:wrap}
 #menu a{color:inherit;text-decoration:none;text-transform:uppercase;letter-spacing:.12em;font-size:clamp(12px,1.3vw,18px);padding:10px 0;border-bottom:1px solid transparent}
 #menu a:hover,#menu a:focus-visible{border-bottom-color:currentColor}
+
 #secciones{display:none;background:#f5f3ef;color:#171717}
 body.abierto #cine{display:none}
 body.abierto #secciones{display:block}
 #secciones section{min-height:100svh;padding:15vh 9vw;border-bottom:1px solid #ccc}
 #secciones h2{font-size:clamp(32px,6vw,80px);font-weight:400}
-#volver{position:fixed;top:20px;right:20px;background:#111;color:white;border:1px solid #aaa;padding:10px 15px;cursor:pointer;z-index:2}
+#volver{position:fixed;top:20px;right:20px;background:#111;color:white;border:1px solid #aaa;padding:10px 15px;z-index:2}
+
 #sobre-mi{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
 .editorial{position:relative;width:min(100%,760px);aspect-ratio:1018/1536;background:#f6f4f1;overflow:hidden}
 .editorial>img{display:block;width:100%;height:100%;object-fit:contain}
@@ -49,12 +55,11 @@ body.abierto #secciones{display:block}
 #panel-texto{padding:clamp(18px,6%,55px);font-family:'Courier New',monospace;line-height:1.6;font-size:clamp(13px,2.2vw,19px)}
 #panel-texto h3{font:400 clamp(28px,5vw,52px) Georgia,serif;letter-spacing:.06em;margin:0 0 24px}
 #panel-texto p{margin:0 0 1.1em}
-.cerrar-panel{position:sticky;top:0;float:right;z-index:4;border:1px solid #111;background:#fff;padding:9px 13px;cursor:pointer;font:12px Georgia,serif}
+.cerrar-panel{position:sticky;top:0;float:right;z-index:4;border:1px solid #111;background:#fff;padding:9px 13px;font:12px Georgia,serif}
 #panel-foto{background:#eee}
 #panel-foto .retrato{height:100%;width:100%;background-image:url('sobre-mi.png');background-size:auto 120%;background-position:90% 45%;background-repeat:no-repeat}
 #panel-foto .cerrar-panel{position:absolute;right:15px;top:15px}
-@media(max-width:600px){#menu nav{flex-direction:column;gap:16px}#menu{gap:40px}.palabra.larga{font-size:clamp(22px,5.8vw,38px)}#secciones section{padding:75px 12px 35px}}
-/* PROPÓSITO Y VALORES: MÁRGENES Y TAMAÑO UNIFORME */
+
 #proposito-y-valores{background:#faf9f6;color:#171717;padding:clamp(65px,9vw,110px) clamp(25px,7vw,90px) 75px!important}
 .manifiesto{width:100%;max-width:760px;margin:0 auto}
 .manifiesto h2{text-align:center;letter-spacing:.04em;margin:0 0 42px;font-size:clamp(27px,5vw,45px)!important}
@@ -70,60 +75,218 @@ body.abierto #secciones{display:block}
 #lectura-proposito.abierto{display:block}
 #lectura-proposito .contenido{max-width:720px;margin:auto;font:400 clamp(21px,3vw,27px)/1.8 "Courier New",monospace}
 #lectura-proposito .contenido p{margin:0 0 1.5em}
-#cerrar-lectura{position:fixed;top:18px;right:18px;background:#171717;color:white;border:0;padding:12px 18px;cursor:pointer;font:13px "Courier New",monospace}
-@media(max-width:600px){#proposito-y-valores{padding:60px 25px 60px!important}.manifiesto h2{margin-bottom:32px}.manifiesto .apertura,.manifiesto .declaracion{font-size:16px;line-height:1.8}}
+#cerrar-lectura{position:fixed;top:18px;right:18px;background:#171717;color:white;border:0;padding:12px 18px;font:13px "Courier New",monospace}
+
+/* VISTO DE REVISTA */
+#visto-de-revista{background:#f8f7f4;color:#171717;padding:80px 25px!important}
+.vdr-wrap{max-width:850px;margin:auto}
+.vdr-wrap h2{text-align:center;font:400 clamp(32px,5vw,58px) Georgia,serif;letter-spacing:.05em;margin:0 0 14px}
+.vdr-sub{text-align:center;font:14px/1.6 "Courier New",monospace;margin:0 0 40px}
+.vdr-image{display:block;width:min(100%,700px);padding:0;border:0;background:transparent;margin:0 auto 40px;cursor:zoom-in}
+.vdr-image img{display:block;width:100%;height:auto;object-fit:contain}
+.vdr-copy{max-width:720px;margin:auto;font:400 16px/1.85 "Courier New",monospace;cursor:zoom-in}
+.vdr-copy p{margin:0 0 1.5em}
+.vdr-hint{text-align:center;font:11px "Courier New",monospace;letter-spacing:.08em;margin:25px 0}
+.vdr-dialog{display:none;position:fixed;inset:0;z-index:3000;background:#f8f7f4;overflow:auto;padding:75px 25px 35px}
+.vdr-dialog.open{display:block}
+#vdr-close{position:fixed;top:15px;right:15px;background:#171717;color:white;border:0;padding:12px 18px}
+#vdr-dialog-body{max-width:850px;margin:auto;font:400 clamp(19px,3vw,25px)/1.8 "Courier New",monospace}
+#vdr-dialog-body p{margin:0 0 1.5em}
+#vdr-dialog-body img{width:100%;height:auto;object-fit:contain;display:block}
+
+@media(max-width:600px){
+#menu nav{flex-direction:column;gap:16px}
+#menu{gap:40px}
+.palabra.larga{font-size:clamp(22px,5.8vw,38px)}
+#secciones section{padding:75px 12px 35px}
+#proposito-y-valores{padding:60px 25px 60px!important}
+.manifiesto h2{margin-bottom:32px}
+.manifiesto .apertura,.manifiesto .declaracion{font-size:16px;line-height:1.8}
+#visto-de-revista{padding:65px 22px!important}
+.vdr-copy{font-size:16px;line-height:1.8}
+}
 </style>
 </head>
 <body>
-<button id="portada" aria-label="Entrar en la web de Blanca Pascua"><img src="portada.png" alt="Portada amarilla original de Blanca Pascua"></button>
+
+<button id="portada" aria-label="Entrar en la web de Blanca Pascua">
+<img src="portada.png" alt="Portada amarilla original de Blanca Pascua">
+</button>
+
 <div id="cine" aria-label="Presentación de Blanca Pascua">
 <div class="palabra">BLANCA PASCUA</div>
 <div class="palabra">ESTILISMO</div>
 <div class="palabra larga">DIRECCIÓN CREATIVA</div>
 <div class="palabra larga">IDENTIDAD VISUAL</div>
-<div id="menu"><nav aria-label="Navegación"><a href="#sobre-mi">SOBRE MÍ</a><a href="#visto-de-revista">VISTO DE REVISTA</a><a href="#proposito-y-valores">PROPÓSITO Y VALORES</a></nav></div>
+<div id="menu">
+<nav aria-label="Navegación">
+<a href="#sobre-mi">SOBRE MÍ</a>
+<a href="#visto-de-revista">VISTO DE REVISTA</a>
+<a href="#proposito-y-valores">PROPÓSITO Y VALORES</a>
+</nav>
 </div>
+</div>
+
 <main id="secciones">
 <button id="volver" type="button">VOLVER</button>
-<section id="sobre-mi"><div class="editorial" id="editorial">
+
+<section id="sobre-mi">
+<div class="editorial" id="editorial">
 <img src="sobre-mi.png" alt="Lámina original Sobre mí de Blanca Pascua" loading="lazy">
 <button type="button" class="zona zona-texto" id="expandir-texto" aria-label="Ampliar el texto de Sobre mí"></button>
 <button type="button" class="zona zona-foto" id="expandir-foto" aria-label="Ampliar la fotografía"></button>
-<div id="panel-texto" class="panel"><button class="cerrar-panel" type="button">CERRAR ×</button>
+
+<div id="panel-texto" class="panel">
+<button class="cerrar-panel" type="button">CERRAR ×</button>
 <h3>SOBRE MÍ</h3>
 <p>Soy Blanca Pascua, estilista. Desarrollo conceptos visuales y construcción de imagen. Busco incorporarme a un equipo que me permita seguir creciendo y colaborando con otros perfiles creativos en proyectos editoriales, audiovisuales, de marca y de autor.</p>
 <p>Mi experiencia en vestuario, showrooms, retail, visual merchandising y proyectos editoriales me ha permitido desarrollar un lenguaje propio, en el que las referencias de los años sesenta conviven con la actitud punk, el minimalismo y el detalle inesperado.</p>
 <p>Ese lenguaje toma forma en Visto de Revista, mi proyecto creativo personal: un espacio de investigación y experimentación en el que desarrollo propuestas de estilismo, fotografía, upcycling y creación visual.</p>
 <p>Visto de Revista representa mi iniciativa y mi manera de entender la moda. Mi objetivo profesional es aportar esa mirada dentro de un equipo y construir imágenes en colaboración con otros perfiles creativos.</p>
-</div><div id="panel-foto" class="panel"><button class="cerrar-panel" type="button">CERRAR ×</button><div class="retrato" role="img" aria-label="Fotografía original ampliada de Blanca Pascua"></div></div>
-</div><p class="ayuda">PULSA EL TEXTO O LA FOTOGRAFÍA PARA AMPLIAR</p></section>
-<section id="visto-de-revista"><h2>VISTO DE REVISTA</h2></section>
-<section id="proposito-y-valores"><div class="manifiesto">
+</div>
+
+<div id="panel-foto" class="panel">
+<button class="cerrar-panel" type="button">CERRAR ×</button>
+<div class="retrato" role="img" aria-label="Fotografía original ampliada de Blanca Pascua"></div>
+</div>
+</div>
+<p class="ayuda">PULSA EL TEXTO O LA FOTOGRAFÍA PARA AMPLIAR</p>
+</section>
+
+<section id="visto-de-revista">
+<div class="vdr-wrap">
+<h2>VISTO DE REVISTA</h2>
+<p class="vdr-sub">Estudio creativo de moda, imagen y experiencias.</p>
+
+<button type="button" class="vdr-image" id="vdr-open-image" aria-label="Ampliar fotografía">
+<img src="visto-de-revista.jpg" alt="Imagen original de Visto de Revista" loading="lazy">
+</button>
+
+<div class="vdr-copy" id="vdr-open-text" role="button" tabindex="0" aria-label="Ampliar texto de Visto de Revista">
+<p>Visto de Revista nace como un proyecto personal de investigación y experimentación visual, donde la moda se convierte en un medio de expresión y construcción de identidad.</p>
+<p>Su universo creativo se nutre de referencias culturales, artísticas y musicales, con una especial influencia de la estética de los años sesenta, la contracultura y la actitud punk. Un lenguaje propio en el que conviven lo vintage, la experimentación, el minimalismo y el detalle inesperado.</p>
+<p>El proyecto abarca diferentes disciplinas: estilismo, dirección creativa, fotografía, transformación de prendas, diseño de estampados, upcycling y desarrollo de conceptos visuales. Cada propuesta parte de una idea que evoluciona a través de la investigación, la selección de materiales y la construcción de una imagen con identidad propia.</p>
+<p>Visto de Revista reivindica la creatividad independiente, la autenticidad y una forma más consciente de entender la moda. Apuesta por la reutilización, el valor de lo artesanal y la capacidad de transformar lo existente en nuevas posibilidades estéticas.</p>
+<p>Más que una colección de trabajos, es un espacio de creación en constante evolución, abierto a nuevas ideas, disciplinas y colaboraciones.</p>
+</div>
+
+<p class="vdr-hint">PULSA LA IMAGEN O EL TEXTO PARA AMPLIAR</p>
+</div>
+</section>
+
+<section id="proposito-y-valores">
+<div class="manifiesto">
 <h2>PROPÓSITO Y VALORES</h2>
-<div class="apertura texto-pulsable" role="button" tabindex="0" aria-label="Ampliar texto de Propósito y valores"><p>A veces, lo que falta no es otra idea, sino saber ver lo que ya tenemos delante.</p><p>Mi trabajo empieza ahí: analizar una identidad, reconocer su potencial y construir una imagen con criterio propio. A través del estilismo, la fotografía y la creación visual, doy forma a las ideas y busco los medios para llevarlas a cabo.</p></div>
-<div class="declaracion texto-pulsable" role="button" tabindex="0" aria-label="Ampliar texto de Propósito y valores"><p>Entiendo la moda como un lenguaje de expresión e identidad, donde los materiales, las formas, el color y las referencias culturales permiten construir nuevas narrativas.</p><p>Defiendo una manera de crear basada en la autenticidad, la experimentación y el aprovechamiento de los recursos existentes. Reinterpretar, transformar y dar una segunda vida a las prendas forma parte de mi manera de entender el proceso creativo.</p><p>Creo en el valor de lo hecho con intención, en la libertad de expresión y en una moda más consciente, donde la creatividad no dependa necesariamente de producir algo nuevo.</p></div>
+
+<div class="apertura texto-pulsable" role="button" tabindex="0" aria-label="Ampliar texto de Propósito y valores">
+<p>A veces, lo que falta no es otra idea, sino saber ver lo que ya tenemos delante.</p>
+<p>Mi trabajo empieza ahí: analizar una identidad, reconocer su potencial y construir una imagen con criterio propio. A través del estilismo, la fotografía y la creación visual, doy forma a las ideas y busco los medios para llevarlas a cabo.</p>
+</div>
+
+<div class="declaracion texto-pulsable" role="button" tabindex="0" aria-label="Ampliar texto de Propósito y valores">
+<p>Entiendo la moda como un lenguaje de expresión e identidad, donde los materiales, las formas, el color y las referencias culturales permiten construir nuevas narrativas.</p>
+<p>Defiendo una manera de crear basada en la autenticidad, la experimentación y el aprovechamiento de los recursos existentes. Reinterpretar, transformar y dar una segunda vida a las prendas forma parte de mi manera de entender el proceso creativo.</p>
+<p>Creo en el valor de lo hecho con intención, en la libertad de expresión y en una moda más consciente, donde la creatividad no dependa necesariamente de producir algo nuevo.</p>
+</div>
+
 <p class="ayuda-proposito">PULSA EL TEXTO PARA AMPLIAR</p>
-<figure><img src="Visto_de_Revista_Reduce_Reuse_Recycle_original.png" alt="Reduce Reuse Recycle Rewear Repeat, Visto de Revista" loading="lazy"><figcaption>REDUCE · REUSE · RECYCLE · REWEAR · REPEAT</figcaption></figure>
-</div></section>
+
+<figure>
+<img src="Visto_de_Revista_Reduce_Reuse_Recycle_original.png" alt="Reduce Reuse Recycle Rewear Repeat, Visto de Revista" loading="lazy">
+<figcaption>REDUCE · REUSE · RECYCLE · REWEAR · REPEAT</figcaption>
+</figure>
+</div>
+</section>
 </main>
-<div id="lectura-proposito" role="dialog" aria-modal="true" aria-label="Propósito y valores ampliado"><button id="cerrar-lectura" type="button">CERRAR ×</button><div class="contenido"></div></div>
+
+<div id="lectura-proposito" role="dialog" aria-modal="true" aria-label="Propósito y valores ampliado">
+<button id="cerrar-lectura" type="button">CERRAR ×</button>
+<div class="contenido"></div>
+</div>
+
+<div id="vdr-dialog" class="vdr-dialog" role="dialog" aria-modal="true" aria-label="Visto de Revista ampliado">
+<button id="vdr-close" type="button">CERRAR ×</button>
+<div id="vdr-dialog-body"></div>
+</div>
+
 <script>
 const portada=document.getElementById('portada');
 portada.addEventListener('click',()=>document.body.classList.add('iniciado'));
+
 document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>document.body.classList.add('abierto')));
-document.getElementById('volver').addEventListener('click',()=>{document.body.classList.remove('abierto');location.hash='';});
+
+document.getElementById('volver').addEventListener('click',()=>{
+document.body.classList.remove('abierto');
+location.hash='';
+});
+
 const editorial=document.getElementById('editorial');
 document.getElementById('expandir-texto').addEventListener('click',()=>editorial.classList.add('texto-abierto'));
 document.getElementById('expandir-foto').addEventListener('click',()=>editorial.classList.add('foto-abierta'));
 editorial.querySelectorAll('.cerrar-panel').forEach(b=>b.addEventListener('click',()=>editorial.classList.remove('texto-abierto','foto-abierta')));
-document.addEventListener('keydown',e=>{if(e.key==='Escape')editorial.classList.remove('texto-abierto','foto-abierta')});
+
+document.addEventListener('keydown',e=>{
+if(e.key==='Escape')editorial.classList.remove('texto-abierto','foto-abierta');
+});
+
 const lectura=document.getElementById('lectura-proposito');
 lectura.querySelector('.contenido').innerHTML=document.querySelector('.manifiesto .apertura').innerHTML+document.querySelector('.manifiesto .declaracion').innerHTML;
-const abrirLectura=()=>{lectura.classList.add('abierto');lectura.scrollTop=0;document.getElementById('cerrar-lectura').focus()};
+
+const abrirLectura=()=>{
+lectura.classList.add('abierto');
+lectura.scrollTop=0;
+document.getElementById('cerrar-lectura').focus();
+};
 const cerrarLectura=()=>lectura.classList.remove('abierto');
-document.querySelectorAll('.manifiesto .texto-pulsable').forEach(el=>{el.addEventListener('click',abrirLectura);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();abrirLectura()}})});
+
+document.querySelectorAll('.manifiesto .texto-pulsable').forEach(el=>{
+el.addEventListener('click',abrirLectura);
+el.addEventListener('keydown',e=>{
+if(e.key==='Enter'||e.key===' '){
+e.preventDefault();
+abrirLectura();
+}
+});
+});
+
 document.getElementById('cerrar-lectura').addEventListener('click',cerrarLectura);
-document.addEventListener('keydown',e=>{if(e.key==='Escape')cerrarLectura()});
+
+const vdrDialog=document.getElementById('vdr-dialog');
+const vdrBody=document.getElementById('vdr-dialog-body');
+const vdrText=document.getElementById('vdr-open-text');
+const vdrImage=document.getElementById('vdr-open-image');
+const vdrClose=document.getElementById('vdr-close');
+
+function abrirVdr(html){
+vdrBody.innerHTML=html;
+vdrDialog.classList.add('open');
+vdrDialog.scrollTop=0;
+vdrClose.focus();
+}
+
+function cerrarVdr(){
+vdrDialog.classList.remove('open');
+vdrBody.innerHTML='';
+}
+
+vdrImage.addEventListener('click',()=>abrirVdr(vdrImage.innerHTML));
+vdrText.addEventListener('click',()=>abrirVdr(vdrText.innerHTML));
+
+vdrText.addEventListener('keydown',e=>{
+if(e.key==='Enter'||e.key===' '){
+e.preventDefault();
+abrirVdr(vdrText.innerHTML);
+}
+});
+
+vdrClose.addEventListener('click',cerrarVdr);
+
+document.addEventListener('keydown',e=>{
+if(e.key==='Escape'){
+cerrarLectura();
+cerrarVdr();
+}
+});
 </script>
 </body>
 </html>
